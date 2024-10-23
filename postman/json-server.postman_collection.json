@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "ed57744b-eb36-4b30-b6dc-dd3e116cdc8d",
+		"name": "json-server",
+		"description": "This documentation outlines the steps to make CRUD request to a JSON Server (Fresh Goodies Specifically)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37941117"
+	},
+	"item": [
+		{
+			"name": "products",
+			"description": "Corresponds to the 'products' data. It contains the following endpoints to handle CRUD operations of that product(s).",
+			"item": [
+				{
+					"name": "products sort by",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products?_sort=category&_order=desc",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "_sort",
+									"value": "category",
+									"description": "fieldName"
+								},
+								{
+									"key": "_order",
+									"value": "desc",
+									"description": "asc or desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 0.005,\r\n    \"weight\": 1000,\r\n    \"name\": \"Pak Choi\",\r\n    \"category\": \"Exotic\",\r\n    \"imageUrl\": \"/products/pakchoi.png\",\r\n    \"metadata\": {\r\n        \"unit\": \"g\",\r\n        \"weight\": 100,\r\n        \"calorie\": 13,\r\n        \"proteins\": 1.5,\r\n        \"fats\": 0.2,\r\n        \"increment\": 100,\r\n        \"carbs\": 2.2\r\n    },\r\n    \"id\": 34\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product price",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 0.0051,\r\n    \"weight\": 1000,\r\n    \"name\": \"Pak Choi\",\r\n    \"category\": \"Exotic\",\r\n    \"imageUrl\": \"/products/pakchoi.png\",\r\n    \"metadata\": {\r\n        \"unit\": \"g\",\r\n        \"weight\": 100,\r\n        \"calorie\": 13,\r\n        \"proteins\": 1.5,\r\n        \"fats\": 0.2,\r\n        \"increment\": 100,\r\n        \"carbs\": 2.2\r\n    },\r\n    \"id\": 34\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "34",
+									"description": "product id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "34",
+									"description": "product id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"description": "Corresponds to the 'cart' data. It contains the following endpoints to handle CRUD operations product to cart.",
+			"item": [
+				{
+					"name": "products in cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cart",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product to cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 34,\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/cart",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "quantity product in cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 34,\r\n    \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/cart/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cart",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "cart id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product from cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cart/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cart",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "cart id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "favorite-product",
+			"description": "Corresponds to the 'favorite-products' data. It contains the following endpoints to handle CRUD operations of user favorite product(s).",
+			"item": [
+				{
+					"name": "new product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 34\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/favorite-products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"favorite-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/favorite-products/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"favorite-products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "UAJ7lPE",
+									"description": "favorite-product id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "favorite products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/favorite-products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"favorite-products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
